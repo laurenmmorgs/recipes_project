@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <title>Creating Recipes</title>
+</head>
+<body>
+   <div class="nav_bar row row-cols-2 row-cols-lg-5 g-2 g-lg-3 px-4">
+      <h1> Add a New Recipe!</h1>
+      <a href="/recipes">Back to Recipes </a>
+      <a href="/logout"> Logout </a>
+   </div>
+   <form action="/creating/recipe" method="POST" class="d-flex flex-column p-3 space-evenly">
+      {% with messages = get_flashed_messages() %}     
+         {% if messages %}                            <!-- check if there are any messages -->
+               {%for message in messages %}            <!-- loop through the messages -->
+                  <p class="error">{{message}}</p>
+               {% endfor %}
+         {% endif %}
+      {% endwith %}
+      <label  for="recipe_name">Name:</label>
+      <input class="w-25 p-1" type="text" name="recipe_name">
+      <label for="description"> Description</label>
+      <textarea class="w-50 p-1"name="description" cols="23" rows="2"></textarea>
+      <label for="instructions"> Instructions</label>
+      <textarea class="w-50 p-1"name="instructions" cols="23" rows="2"></textarea>
+      <div class="questions p-3">
+         <label for="date">Date cooked/made: </label>
+         <input class="w-25 p-1" type="date" name="date_cooked">
+         <p> Cooked Under 30 Mins? </p>
+         <input type="radio" name="cooked_in_30" value="Yes">
+         <label for="cooked_in_30"> Yes </label>
+         <input type="radio" name="cooked_in_30" value="No">
+         <label for="cooked_in_30"> No </label>
+      </div>
+      <button class="w-25 p-1"> Submit </button>
+   </form>
+</body>
+</html>

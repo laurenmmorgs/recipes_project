@@ -1,0 +1,14 @@
+
+
+.login_body{
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.error {
+   color: red;
+}
+
+#home {
+   margin-left: 236px;
+}
